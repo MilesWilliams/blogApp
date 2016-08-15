@@ -1,1 +1,9 @@
-<h1> this is the blog page </h1>
+{% extends 'blog/base.html' %}
+{% block content %}
+  {% for post in posts %}
+    <h1><a href="{% url 'post_detail' pk=post.pk %}">{{post.title}}</a></h1>
+    <h2> {{ post.published_date }}</h2>
+    <h2> {{ post.author }}</h2>
+    <p> {{ post.text | linebreaksbr }}
+  {% endfor %}
+{% endblock %}
